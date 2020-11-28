@@ -17,7 +17,7 @@
     <a class="navbar-brand" href="./index.html">Note Taker
     </a>
     <div class="icons">
-      <i class="fas fa-save text-light save-note"></i>
+      <i class="fas fa-save text-light save-note" href="" role="button"></i>
       <i class="fas fa-pen text-light new-note"></i>
     </div>
   </nav>
@@ -36,35 +36,8 @@
     </div>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script type="text/javascript">
-  
-  $(".save-note").on("click", function (event){
-    event.preventDefault();
-
-    var saveNote = {
-      noteTitle: $(".note-title").val().trim(),
-      writtenNote: $(".note-textarea").val().trim(),
-
-    };
-console.log(saveNote)
-
-
-
-$.post("/api/tables", saveNote,
-function(data){
-  if(data){
-    alert("Yay! You are officially saved!");
-  }
-  else {
-    alert("Sorry you are on the wait list");
-  }
-  
-  $(".note-title").val("");
-});
-
-});
-
-  
+  <script src="./assets/js/index.js">
+   
   </script>
 </body>
 
