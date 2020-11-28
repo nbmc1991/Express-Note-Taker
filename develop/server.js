@@ -31,6 +31,7 @@ app.get("/notes", function(req, res){
 
 app.get("/api/notes", function(req, res){
     return res.json();
+   
 });  //API ROUTES interact with notes api db
 
 
