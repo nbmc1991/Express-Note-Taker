@@ -28,7 +28,7 @@ app.use(express.json());
 
 
 app.get("/notes", function(req, res){
-    res.sendFile(path.join(__dirname, "/public/notes.html"), function (err){
+    res.sendFile(path.join(__dirname, "./public/notes.html"), function (err){
         if (err) throw err;
     })
 });
@@ -40,6 +40,22 @@ app.get("/api/notes", function(req, res){
    
 });  //API ROUTES interact with notes api db
 
+app.post("/api/notes", function (req, res){
+var newNote = req.body;
+console.log(req.params.id); 
+let id = uuidv4();     //this will generate a unique id with the uuid package
+newNote.id = id;
+db.push(newNote); //pushes newNote to db file variable
+fs.writeFile(path.join(__dirname, "/db/db.json"),
+JSON.stringify(db),
+(err)=>{
+    if (err) throw err;
+});
+res.json(db);
+});   //function when user POST/saves a note
+
+
+
 
 
 //LISTENER STARTS COMMUCATION/SERVER
@@ -47,7 +63,3 @@ app.listen(PORT, function (){
     console.log( "App is listening on PORT:" + PORT);
 });
 
-
-app.post("/api/notes", function (req, res){
-
-});
