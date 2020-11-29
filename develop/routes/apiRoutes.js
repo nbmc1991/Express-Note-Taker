@@ -1,27 +1,26 @@
+const db = require("../db/db.json");
 //creating an empty array to hold saved notes
+//  var savedNotesArray =[
+//     {
+        
+//     },
+// ];
 
-var savedNotesArray =[
-    {
-        noteTitle:"Today was a Good Day",
-        writtenNote:"bla bla bla"
-    },
-];
+// //export the file to make it accessible for other files to use using require
+// module.exports= savedNotesArray ;
 
-//export the file to make it accessible for other files to use using require
-module.exports= savedNotesArray ;
-
-require("./htmlRoutes")(app);
-require("./apiRoutes")(app);
+// require("./htmlRoutes")(app);
+// require("./apiRoutes")(app);
 
 
 
 
 
-// module.exports = function (app){
+module.exports = function (app){
     
-//     app.get("/api/notes", function(req,res){
-//         res.json(savedNotes);
-//     });
+    app.get("/api/notes", function(req,res){
+        res.json(db);
+    });
     
 
 //     //POST
