@@ -1,4 +1,4 @@
-const db = require("../db/db.json");   //path to file were notes are going to be saved
+let db = require("../db/db.json");   //path to file were notes are going to be saved
 const fs = require("fs");
 var path = require("path");
 var { v4: uuidv4 } = require("uuid"); // mesage id maker
@@ -40,6 +40,8 @@ router.delete("/api/notes/:id", (req, res) => {
         let parsed = JSON.parse(data)
         let removed = parsed.filter(note => note.id !== req.params.id)
         console.log(removed)
+        // next we update our db variable
+        db = removed;
         fs.writeFile("./db/db.json", JSON.stringify(removed), function (err) {
             if (err) throw err;
             res.json(db)
